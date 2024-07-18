@@ -1,10 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
+  const [inputText, setInputText] = useState("");
+  const [displayText, setDisplayText] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDisplayText(inputText);
+  };
+
   return (
-    <div className="text-center">
-      <h1 className="text-3xl">Your Blank Canvas</h1>
-      <p>Chat with the agent to start making edits.</p>
+    <div className="container mx-auto mt-8 p-4">
+      <h1 className="text-3xl font-bold mb-4">Simple Text Input</h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input
+          type="text"
+          placeholder="Enter some text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          className="max-w-md"
+        />
+        <Button type="submit">Submit</Button>
+      </form>
+      {displayText && (
+        <p className="mt-4 text-lg">
+          You entered: <span className="font-semibold">{displayText}</span>
+        </p>
+      )}
     </div>
   );
 };
