@@ -34,5 +34,4 @@ const Index = () => {
   );
 };
 
-// Syntax error: Missing closing parenthesis
 export default Index;
